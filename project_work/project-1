@@ -15,3 +15,21 @@ int main() {
     cout << "\n\nWelcome to the Data Encryption/Decryption Program!" << endl;
     cout << "This program allows you to securely transmit a four-digit integer over the telephone." << endl;
     cout << "You can choose to encrypt or decrypt the four-digit integer." << endl;
+// Keep prompting the user for a valid four-digit integer until they enter one or run out of attempts
+    while (num_attempts > 0) {
+        cout << "Enter a four-digit integer: ";
+        cin >> number;
+
+        // Check if the entered number is a four-digit integer, and provide feedback if it is not
+        if (number < 1000 || number > 9999) {
+            num_attempts--;
+            cout << "The number entered is not a four-digit integer. Please enter another number with four digits." << endl;
+            cout << "You have " << num_attempts << " attempts left." << endl;
+
+            // Continue to the next iteration of the loop (prompting for input again)
+            continue;
+        }
+
+        // If the user enters a valid four-digit integer, break out of the input validation loop and proceed with encryption/decryption
+        break;
+    }
