@@ -86,3 +86,17 @@ int main() {
         // Swap the first and third digits, and then swap the second and fourth digits.
         swap(digits[0], digits[2]);
         swap(digits[1], digits[3]);
+        
+        // Output the decrypted integer
+        cout << "Decrypted integer: ";
+        for (int i = 0; i < 4; i++) {
+            cout << digits[i];
+        }
+
+        cout << endl;
+    }
+
+    // Output a thank you message to the user
+    cout << "Thank you for using the Data Encryption/Decryption Program!" << endl;
+    return 0;
+}
