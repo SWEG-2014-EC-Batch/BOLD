@@ -33,3 +33,23 @@ int main() {
         // If the user enters a valid four-digit integer, break out of the input validation loop and proceed with encryption/decryption
         break;
     }
+   
+   // If the user runs out of attempts, exit the program
+    if (num_attempts == 0) {
+        cout << "Sorry you have run out of attempts. Exiting program." << endl;
+        return 0;
+    }
+
+    // Set up an array to hold the individual digits of the four-digit integer
+    int digits[4];
+    digits[0] = number / 1000;
+    digits[1] = (number / 100) % 10;
+    digits[2] = (number / 10) % 10;
+    digits[3] = number % 10;
+
+    // Prompt the user for their choice of encryption or decryption
+    do {
+        cout << "Enter your choice:" << endl;
+        cout << "1. Encrypt" << endl;
+        cout << "2. Decrypt" << endl;
+        cin >> choice;
