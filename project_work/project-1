@@ -53,3 +53,18 @@ int main() {
         cout << "1. Encrypt" << endl;
         cout << "2. Decrypt" << endl;
         cin >> choice;
+                if (choice != '1' && choice != '2') {
+            cout << "Invalid choice. Please enter a valid choice (1 or 2)." << endl;
+        }
+    } while (choice != '1' && choice != '2');
+
+    // If the user chooses encryption, perform the encryption algorithm
+    if (choice == '1') {
+        // Add 7 to each digit and take the remainder when divided by 10
+        for (int i = 0; i < 4; i++) {
+            digits[i] = (digits[i] + 7) % 10;
+        }
+
+        // Swap the first and third digits, and then swap the second and fourth digits.
+        swap(digits[0], digits[2]);
+        swap(digits[1], digits[3]);
