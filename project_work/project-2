@@ -20,4 +20,23 @@ int main() {
     int *idsPtr = ids; // Pointer to ids array
 
     char option; // Variable to store user's menu option
+    do {
+        cout << "\n\n";
+        cout << "Welcome to the Customer Tracking Program!" << endl;
+        cout << "This program allows you to track your customers and their purchases." << endl;
+        cout << "You can add new customers, record sales, print reports, and search for customers by ID or name." << endl;
+        cout << "Let's get started!" << endl;
+        cout << "\n\n";
+        cout << "a. Add new customer\n";
+        cout << "s. Record sale\n";
+        cout << "p. Print report\n";
+        cout << "f. Search customer by code\n";
+        cout << "n. Search customer by name\n";
+        cout << "q. quit\n";
+        cout << "Enter option: ";
+        cin >> option;
+
+        if (option == 'a') { // Add new customer
+            if (numCustomers == MAX_CUSTOMERS) { // Check if maximum number of customers has been reached
+                cout << "Maximum number of customers reached." << endl;
     
