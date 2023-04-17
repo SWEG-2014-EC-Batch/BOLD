@@ -8,3 +8,8 @@ int main() {
     cout << "\n";
     cout <<"Enter size of the pattern you want to print: ";
     cin >> n; // read in the size of the pattern from the user
+// print upper half of the pattern
+    for (int i = n; i >= 1; i--) { // iterate from n to 1
+        for (int k = n; k >= i; k--) { // iterate from n to i
+            cout << "  "; // print 2 spaces
+        }
