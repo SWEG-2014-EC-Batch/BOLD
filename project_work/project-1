@@ -1,1 +1,17 @@
+//An encryption/decryption program that allows the company to securely transmit data over the telephone
+#include <iostream>
+using namespace std;
 
+int main() {
+    // Set a maximum number of attempts and initialize the number of attempts to equal the maximum
+    const int max_attempts = 4;
+    int num_attempts = max_attempts;
+
+    // Declare variables for storing user input
+    int number;
+    char choice;
+
+    // Display a welcome message and program description
+    cout << "\n\nWelcome to the Data Encryption/Decryption Program!" << endl;
+    cout << "This program allows you to securely transmit a four-digit integer over the telephone." << endl;
+    cout << "You can choose to encrypt or decrypt the four-digit integer." << endl;
