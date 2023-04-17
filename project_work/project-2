@@ -1,1 +1,22 @@
+#include <iostream>
+#include <string>
+using namespace std;
 
+const int MAX_CUSTOMERS = 100; // Maximum number of customers that can be tracked
+
+int main() {
+    string names[MAX_CUSTOMERS]; // Array to store customer names
+    string sexes[MAX_CUSTOMERS]; // Array to store customer sexes
+    string addresses[MAX_CUSTOMERS]; // Array to store customer addresses
+    double sales[MAX_CUSTOMERS] = {0}; // Array to store customer sales, initialized to 0
+    int numCustomers = 0; // Number of customers currently being tracked
+    int ids[MAX_CUSTOMERS]; // Array to store customer IDs
+
+    string *namesPtr = names; // Pointer to names array
+    string *sexesPtr = sexes; // Pointer to sexes array
+    string *addressesPtr = addresses; // Pointer to addresses array
+    double *salesPtr = sales; // Pointer to sales array
+    int *idsPtr = ids; // Pointer to ids array
+
+    char option; // Variable to store user's menu option
+    
