@@ -33,10 +33,32 @@ int main() {
         cout << "f. Search customer by code\n";
         cout << "n. Search customer by name\n";
         cout << "q. quit\n";
+        
         cout << "Enter option: ";
         cin >> option;
 
         if (option == 'a') { // Add new customer
             if (numCustomers == MAX_CUSTOMERS) { // Check if maximum number of customers has been reached
                 cout << "Maximum number of customers reached." << endl;
+                 } else { // Add new customer
+                cout << "Enter customer name: ";
+                string name;
+                cin >> name;
+                *(namesPtr + numCustomers) = name;
+
+                cout << "Enter customer sex (m/f): ";
+                string sex;
+                cin >> sex;
+                *(sexesPtr + numCustomers) = sex;
+
+                cout << "Enter customer address: ";
+                string address;
+                cin >> address;
+                *(addressesPtr + numCustomers) = address;
+
+                *(idsPtr + numCustomers) = numCustomers;
+
+                cout << "Customer " << name << " added with ID " <<numCustomers << endl;
+                numCustomers++; // Increment number of customers
+            }
     
