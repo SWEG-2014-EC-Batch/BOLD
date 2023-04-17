@@ -1,1 +1,10 @@
+#include <iostream> 
+using namespace std; 
 
+//A program that prints a character hourglass pattern 
+int main() { 
+
+    int n; // size of the pattern 
+    cout << "\n";
+    cout <<"Enter size of the pattern you want to print: ";
+    cin >> n; // read in the size of the pattern from the user
