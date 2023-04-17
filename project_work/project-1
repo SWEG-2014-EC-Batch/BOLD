@@ -1,7 +1,7 @@
-//An encryption/decryption program that allows the company to securely transmit data over the telephone
 #include <iostream>
 using namespace std;
 
+//An encryption/decryption program that allows the company to securely transmit four-digit data over the telephone
 int main() {
     // Set a maximum number of attempts and initialize the number of attempts to equal the maximum
     const int max_attempts = 4;
@@ -29,11 +29,9 @@ int main() {
             // Continue to the next iteration of the loop (prompting for input again)
             continue;
         }
-
         // If the user enters a valid four-digit integer, break out of the input validation loop and proceed with encryption/decryption
         break;
     }
-   
    // If the user runs out of attempts, exit the program
     if (num_attempts == 0) {
         cout << "Sorry you have run out of attempts. Exiting program." << endl;
@@ -73,7 +71,6 @@ int main() {
         for (int i = 0; i < 4; i++) {
             cout << digits[i];
         }
-
         cout << endl;
 
     // If the user chooses decryption, perform the decryption algorithm
@@ -92,10 +89,8 @@ int main() {
         for (int i = 0; i < 4; i++) {
             cout << digits[i];
         }
-
         cout << endl;
     }
-
     // Output a thank you message to the user
     cout << "Thank you for using the Data Encryption/Decryption Program!" << endl;
     return 0;
