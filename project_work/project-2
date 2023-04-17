@@ -61,4 +61,20 @@ int main() {
                 cout << "Customer " << name << " added with ID " <<numCustomers << endl;
                 numCustomers++; // Increment number of customers
             }
-    
+    } else if (option == 's') { // Record sale
+            int id;
+            cout << "Enter customer ID: ";
+            cin >> id;
+            if (id < 0 || id >= numCustomers) { // Check if ID is valid
+                cout << "Invalid customer ID." << endl;
+            } else { // Record sale for valid ID
+                double sale;
+                cout << "Enter sale amount: $";
+                cin >> sale;
+                *(salesPtr + id) += sale; // Add sale amount to customer's total sales
+                cout << "Sale of $" << sale << " recorded for customer " << *(namesPtr + id) << endl;
+            }
+        } else if (option == 'p') { // Print report
+            double totalSales = 0; // Variable to store total sales
+            cout << "Customer ID\tName\tSex\tAddress\tSales" << endl;
+            cout << "-----------------------------------------" << endl;
