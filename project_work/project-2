@@ -101,3 +101,25 @@ int main() {
             string searchName;
             cout << "Enter customer name: ";
             cin >> searchName;
+             bool found = false; // Variable to track if customer is found
+            for (int i = 0; i < numCustomers; i++) { // Loop through all customers
+                if (*(namesPtr + i) == searchName) { // Check if customer name matches search name
+                    cout << "Customer ID: " << *(idsPtr + i) << endl;
+                    cout << "Sex: " << *(sexesPtr + i) << endl;
+                    cout << "Address: " << *(addressesPtr + i) << endl;
+                    cout << "Total sales: $" << *(salesPtr + ids[i]) << endl;
+                    found = true; // Set found to true
+                    break; // Exit loop
+                }
+            }
+            if (!found) { // If customer not found
+                cout << "Customer not found." << endl;
+            }
+        } else if (option != 'q') { // Invalid option
+            cout << "Invalid option, please try again." << endl;
+        }
+    } while (option != 'q'); // Continue until user chooses to quit
+
+    return 0; // End program
+}
+
