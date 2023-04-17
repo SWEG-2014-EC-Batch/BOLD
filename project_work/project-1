@@ -68,3 +68,21 @@ int main() {
         // Swap the first and third digits, and then swap the second and fourth digits.
         swap(digits[0], digits[2]);
         swap(digits[1], digits[3]);
+ // Output the encrypted integer
+        cout << "Encrypted integer: ";
+        for (int i = 0; i < 4; i++) {
+            cout << digits[i];
+        }
+
+        cout << endl;
+
+    // If the user chooses decryption, perform the decryption algorithm
+    } else {
+        // Subtract 3 from each digit and take the remainder when divided by 10
+        for (int i = 0; i < 4; i++) {
+            digits[i] = (digits[i] + 3) % 10;
+        }
+
+        // Swap the first and third digits, and then swap the second and fourth digits.
+        swap(digits[0], digits[2]);
+        swap(digits[1], digits[3]);
