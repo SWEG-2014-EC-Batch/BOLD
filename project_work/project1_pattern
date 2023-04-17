@@ -1,13 +1,14 @@
 #include <iostream> 
 using namespace std; 
 
-//A program that prints a character hourglass pattern 
+//A program that prints a character Hourglass pattern 
 int main() { 
 
     int n; // size of the pattern 
     cout << "\n";
     cout <<"Enter size of the pattern you want to print: ";
     cin >> n; // read in the size of the pattern from the user
+    
 // print upper half of the pattern
     for (int i = n; i >= 1; i--) { // iterate from n to 1
         for (int k = n; k >= i; k--) { // iterate from n to i
@@ -35,10 +36,8 @@ int main() {
             } else { 
                 cout<<(char)('A'+(2*i)-j-1)<<" "; // print letter
             } 
- 
         } 
         cout << endl; // move to next row
     } 
- 
     return 0; 
 }
