@@ -78,3 +78,26 @@ int main() {
             double totalSales = 0; // Variable to store total sales
             cout << "Customer ID\tName\tSex\tAddress\tSales" << endl;
             cout << "-----------------------------------------" << endl;
+            
+            for (int i = 0; i < numCustomers; i++) { // Loop through all customers
+                cout << *(idsPtr + i) << "\t\t" << *(namesPtr + i) << "\t" << *(sexesPtr + i) << "\t" << *(addressesPtr + i) << "\t$" << *(salesPtr + ids[i]) << endl;
+                totalSales += *(salesPtr + ids[i]); // Add customer's sales to total sales
+            }
+            cout << "Total sales: $" << totalSales << endl;
+            cout << "Average sales per customer: $" << (totalSales / numCustomers) << endl; // Calculate and print average sales per customer
+        } else if (option == 'f') { // Search customer by ID
+            int searchID;
+            cout << "Enter customer ID: ";
+            cin >> searchID;
+            if (searchID < 0 || searchID >= numCustomers) { // Check if ID is valid
+                cout <<    "Invalid customer ID." << endl;
+            } else { // Print customer information for valid ID
+                cout << "Customer name: " << *(namesPtr + searchID) << endl;
+                cout << "Sex: " << *(sexesPtr + searchID) << endl;
+                cout << "Address: " << *(addressesPtr + searchID) << endl;
+                cout << "Total sales: $" << *(salesPtr + searchID) << endl;
+            }
+        } else if (option == 'n') { // Search customer by name
+            string searchName;
+            cout << "Enter customer name: ";
+            cin >> searchName;
