@@ -20,6 +20,7 @@ int main() {
     int *idsPtr = ids; // Pointer to ids array
 
     char option; // Variable to store user's menu option
+    
     do {
         cout << "\n\n";
         cout << "Welcome to the Customer Tracking Program!" << endl;
@@ -60,21 +61,24 @@ int main() {
 
                 cout << "Customer " << name << " added with ID " <<numCustomers << endl;
                 numCustomers++; // Increment number of customers
-            }
-    } else if (option == 's') { // Record sale
+            }          
+    } 
+    else if (option == 's') { // Record sale
             int id;
             cout << "Enter customer ID: ";
             cin >> id;
             if (id < 0 || id >= numCustomers) { // Check if ID is valid
                 cout << "Invalid customer ID." << endl;
-            } else { // Record sale for valid ID
+            } 
+            else { // Record sale for valid ID
                 double sale;
                 cout << "Enter sale amount: $";
                 cin >> sale;
                 *(salesPtr + id) += sale; // Add sale amount to customer's total sales
                 cout << "Sale of $" << sale << " recorded for customer " << *(namesPtr + id) << endl;
-            }
-        } else if (option == 'p') { // Print report
+            }   
+        }
+        else if (option == 'p') { // Print report
             double totalSales = 0; // Variable to store total sales
             cout << "Customer ID\tName\tSex\tAddress\tSales" << endl;
             cout << "-----------------------------------------" << endl;
@@ -85,7 +89,8 @@ int main() {
             }
             cout << "Total sales: $" << totalSales << endl;
             cout << "Average sales per customer: $" << (totalSales / numCustomers) << endl; // Calculate and print average sales per customer
-        } else if (option == 'f') { // Search customer by ID
+        }       
+        else if (option == 'f') { // Search customer by ID
             int searchID;
             cout << "Enter customer ID: ";
             cin >> searchID;
@@ -96,8 +101,9 @@ int main() {
                 cout << "Sex: " << *(sexesPtr + searchID) << endl;
                 cout << "Address: " << *(addressesPtr + searchID) << endl;
                 cout << "Total sales: $" << *(salesPtr + searchID) << endl;
-            }
-        } else if (option == 'n') { // Search customer by name
+            }         
+        } 
+        else if (option == 'n') { // Search customer by name
             string searchName;
             cout << "Enter customer name: ";
             cin >> searchName;
@@ -111,10 +117,10 @@ int main() {
                     found = true; // Set found to true
                     break; // Exit loop
                 }
-            }
+            }         
             if (!found) { // If customer not found
                 cout << "Customer not found." << endl;
-            }
+            }            
         } else if (option != 'q') { // Invalid option
             cout << "Invalid option, please try again." << endl;
         }
