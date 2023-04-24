@@ -15,7 +15,8 @@ int main() {
     cout << "\n\nWelcome to the Data Encryption/Decryption Program!" << endl;
     cout << "This program allows you to securely transmit a four-digit integer over the telephone." << endl;
     cout << "You can choose to encrypt or decrypt the four-digit integer." << endl;
-// Keep prompting the user for a valid four-digit integer until they enter one or run out of attempts
+   
+   // Keep prompting the user for a valid four-digit integer until they enter one or run out of attempts
     while (num_attempts > 0) {
         cout << "Enter a four-digit integer: ";
         cin >> number;
@@ -66,7 +67,7 @@ int main() {
         // Swap the first and third digits, and then swap the second and fourth digits.
         swap(digits[0], digits[2]);
         swap(digits[1], digits[3]);
- // Output the encrypted integer
+       // Output the encrypted integer
         cout << "Encrypted integer: ";
         for (int i = 0; i < 4; i++) {
             cout << digits[i];
