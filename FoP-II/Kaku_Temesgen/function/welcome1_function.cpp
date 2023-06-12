@@ -3,7 +3,7 @@
 
 using namespace std;
 //Creating function declaration and definition together.
-//This function has no return type and parameter(s).
+//This function has no return and parameter(s).
 
 void welcome() {
     string name;
