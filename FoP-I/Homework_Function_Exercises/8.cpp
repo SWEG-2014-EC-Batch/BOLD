@@ -1,8 +1,8 @@
-// A c++ program that check whether an integer number entered by user is prime or not.
+// A c++ program that checks whether an integer number entered by user is prime or not.
 #include <iostream>
 #include <cmath>
-
 using namespace std;
+
 // function declaration to check if input integer is prime
 bool isPrime(int n);
 
@@ -20,6 +20,7 @@ int main() {
 
     return 0;
 }
+
 // function definition to check if a number is prime
 bool isPrime(int n) {
     if (n <= 1 || n > 1000) return false;
