@@ -3,7 +3,7 @@
 
 #include <iostream>
 using namespace std;
-//This function has no return type and parameter(s).
+//This function has no return and parameter(s).
 void welcome(); // Function declaration
 
 int main() {
