@@ -1,4 +1,4 @@
-//A c++ program to demonstrate a function with parameter(s) and no return type.
+//A c++ program to demonstrate a function with parameter(s) and no return.
 #include <iostream>
 using namespace std;
 
