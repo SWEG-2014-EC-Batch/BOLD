@@ -1,19 +1,9 @@
-//A Leapyear checker c++ program.
+//A c++ program to demonstrate a function with both return and a parameter.
 #include <iostream>
-
 using namespace std;
 
-int isLeapYear(int year) {
-    // If the year is divisible by 4
-    if (year % 4 == 0) {
-        // If the year is divisible by 100 but not divisible by 400
-        if (year % 100 == 0 && year % 400 != 0) {
-            return 0; // Not a leap year
-        }
-        return 1; // Leap year
-    }
-    return 0; // Not a leap year
-}
+// Function declaration
+int isLeapYear(int year);
 
 int main() {
     int year;
@@ -27,4 +17,15 @@ int main() {
     }
 
     return 0;
+}
+// Function definition
+int isLeapYear(int year) {
+
+    if (year % 4 == 0) {
+        if (year % 100 == 0 && year % 400 != 0) {
+            return 0; // Not a leap year
+        }
+        return 1; // Leap year
+    }
+    return 0; // Not a leap year
 }
