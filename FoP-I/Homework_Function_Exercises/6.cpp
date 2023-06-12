@@ -6,7 +6,9 @@ using namespace std;
 
 float hypotenuse(double side1,double side2); //declare the function
 
-int main(){double side1;double side2;
+int main(){
+    
+    double side1;double side2;
     cout <<"welcome,this is a hypotenuse calculator application"<<endl; //welcome message 
     cout <<"enter the first side of the triangle"; //prompt the user to enter the first side
     cin >>side1;
@@ -23,5 +25,4 @@ float hypotenuse(double side1, double side2){
 
     side3=sqrt(squareside3); //finds the square root of the squareside3
     return side3;
-   
 }
