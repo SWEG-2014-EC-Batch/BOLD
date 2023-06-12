@@ -1,7 +1,9 @@
-// A c++ program that ask user's name and print welcome message.
+/* A c++ program to demonstrate function declaration and definition. In this program we create a function
+ declaration and definition separately.*/
+
 #include <iostream>
 using namespace std;
-
+//This function has no return type and parameter(s).
 void welcome(); // Function declaration
 
 int main() {
