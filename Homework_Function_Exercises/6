@@ -12,3 +12,14 @@ float hypotenuse(double side1,double side2){
     return side3;
    
 }
+int main(){double side1;double side2;
+    cout <<"welcome,this is a hypotenuse calculator application"<<endl;//welcome message
+    
+    cout <<"enter the first side of the triangle";//promt the user to enter the first side
+    cin >>side1;
+    cout<<"enter the second side of the triangle";//promt the user to enter the second side
+    cin>>side2;
+    hypotenuse(side1 ,side2);//call the fuction to be excuted (to calculate the hypotenuse and displaythe result)
+   
+   return 0;
+}
