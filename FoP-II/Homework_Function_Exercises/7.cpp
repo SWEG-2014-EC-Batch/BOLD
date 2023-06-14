@@ -1,0 +1,34 @@
+// This program calculates the product of a series of integers passed to a function using a variable-length argument list.
+#include <iostream>
+#include <cstdarg>
+using namespace std;
+
+int product(int num, ...);
+
+int main() {
+    // Call the product function with different sets of integer arguments and output their results
+    cout << "Product of 2, 3, and 4: " << product(3, 2, 3, 4) << endl;
+    cout << "Product of 6 and 7: " << product(2, 6, 7) << endl;
+    cout << "Product of 10 and 20: " << product(2, 10, 20) << endl;
+
+    return 0;
+}
+
+// Define a function that calculates the product of an arbitrary number of integers
+// Using a variable-length argument list
+int product(int num, ...) {
+    // Declare a va_list variable to hold the variable arguments
+    va_list args;
+    // Initialize the va_list object using the va_start
+    va_start(args, num);
+    int result = 1;
+
+    // A loop that uses va_arg to obtain each argument and multiply the resulting products together
+    for (int i = 0; i < num; ++i) {
+        result *= va_arg(args, int);
+        }
+
+    // End the va_list object using the va_end
+    va_end(args);
+    return result;
+}
