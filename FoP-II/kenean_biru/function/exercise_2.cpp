@@ -1,4 +1,4 @@
-//demonstration for declaration & defination of a function separetly(recommendable) and calling of a function
+//demonstration for declaration and defination of a function separetly(recommendable) and calling of a function
 //a function to print a welcome message
 #include<iostream>
 using namespace std;
