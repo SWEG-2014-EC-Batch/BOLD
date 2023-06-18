@@ -1,0 +1,77 @@
+//a program to convert 24 hour time format to 12 hour form 
+//demonstration of how to pass argument in different methods
+#include <iostream>
+using namespace std;
+//declare the functions
+
+void input(int& hours, int& minutes);
+void output(int hours, int minutes, char type);
+int convert(int hours, char& type);
+
+int main() {
+  int hours;
+  int minutes;
+  char type;
+  char answer;
+ 
+  do
+   {
+    input(hours, minutes);//call function for the input
+    hours = convert(hours, type);//call the converetr function
+    output(hours, minutes, type);//call the out put function 
+
+    cout << "Perform another calculation? (y/n): ";
+    cin >> answer;
+
+    } while ((answer == 'Y') || (answer == 'y'));
+
+  return 0;
+}
+ 
+ //input function defination
+void input(int& hours, int& minutes) {
+  cout << "Enter the hours for the 24 hour time(between 0-24): ";
+  cin >> hours;
+  cout << "Enter the minutes for the 24 hour time(between 0-60): ";
+  cin >> minutes;
+ }
+
+
+// Displays a time in 12 hour notation
+void output(int hours, int minutes, char type) {
+  cout << "The time converted to 12 hour format is: " << hours << ":";  
+  
+  // special handling for leading 0s on the minutes
+  
+  cout.width(2);
+  cout.fill('0');
+  cout << minutes;
+  
+  if (type == 'A')
+    cout << " A.M." << endl;
+  else
+    cout << " P.M." << endl;
+ }
+ 
+
+//converter function defination 
+int convert(int hours, char& type)//records the type in char data type for latter use in the out put function
+{if (hours == 0) {
+      hours = 12;
+      type = 'A';
+   }
+   else if (hours == 12) {
+      type = 'P';
+   }
+   else if (hours > 12) {
+      hours -= 12;
+      type = 'P';
+   }
+   else {
+      type = 'A';
+   }
+   return hours;
+}
+
+
+      
