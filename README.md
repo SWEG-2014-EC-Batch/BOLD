@@ -1,2 +1,3 @@
 # BOLD
-
+Dynamic and Prominent!
+Containing 6 BOLD girl coders and problem solvers...
