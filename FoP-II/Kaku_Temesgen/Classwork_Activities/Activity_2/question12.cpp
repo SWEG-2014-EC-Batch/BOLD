@@ -1,4 +1,4 @@
-//A c++ program to demonstrate parameter pass by value, address, and pointer.
+// A c++ program to demonstrate parameter pass by value, address, and pointer.
 #include <iostream>
 
 using namespace std;
