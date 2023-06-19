@@ -1,3 +1,4 @@
+// A c++ program to demonstrate a user-defined header file.
 #include <iostream>
 #include "calculator.h"
 
