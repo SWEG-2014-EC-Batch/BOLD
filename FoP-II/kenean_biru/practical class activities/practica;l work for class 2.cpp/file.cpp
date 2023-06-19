@@ -1,10 +1,10 @@
 //demonstration of the way to avoid re defination of a fun file.h
-//connected to the file fire1 and fire2  
+//connected to the file file1 and file2  
 #include<iostream>
 #include "fire.h"
 
-#ifndef FIRE2// main concept if not defined
-#define FIRE2//then define it otherwise use it as include 
+#ifndef FILE2// main concept if not defined
+#define FILE2//then define it otherwise use it as include 
 using namespace std;
 
 
