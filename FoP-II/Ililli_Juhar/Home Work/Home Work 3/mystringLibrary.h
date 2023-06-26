@@ -11,8 +11,8 @@ int countVowels(string s);
 int countConsonants(string s);
 std::string reverseString(string s);
 int compareStrings(string s1, string s2);
-std::string toLowerCase(string s);
-std::string toUpperCase(string s);
+string toLowerCase(string s);
+string toUpperCase(string s);
 
 #endif
 
@@ -44,7 +44,7 @@ int countVowels(string s) {
 }
 
 // Count the number of consonants in a string
-int countConsonants(std::string s) {
+int countConsonants(string s) {
     int count = 0;
     
     for (int i = 0; s[i] != '\0'; i++) {
@@ -64,9 +64,9 @@ int countConsonants(std::string s) {
 }
 
 // Reverse a string
-string reverseString(std::string s) {
+string reverseString(string s) {
     int length = stringLength(s);
-    std::string reversedStr = "";
+    string reversedStr = "";
     
     for (int i = length-1; i >= 0; i--) {
         reversedStr += s[i];
@@ -76,7 +76,7 @@ string reverseString(std::string s) {
 }
 
 // Compare two strings
-int compareStrings(std::string s1, std::string s2) {
+int compareStrings(string s1, string s2) {
     int i = 0;
     
     while (s1[i] == s2[i]) {
@@ -95,7 +95,7 @@ int compareStrings(std::string s1, std::string s2) {
 }
 
 // Convert a string to lowercase version
-string toLowerCase(std::string s) {
+string toLowerCase(string s) {
     int length = stringLength(s);
     
     for (int i = 0; i < length; i++) {
@@ -108,7 +108,7 @@ string toLowerCase(std::string s) {
 }
 
 // Convert a string to uppercase version
-string toUpperCase(std::string s) {
+string toUpperCase(string s) {
     int length = stringLength(s);
 
     for(int i=0; i<length; i++){
@@ -116,4 +116,5 @@ string toUpperCase(std::string s) {
             s[i]-=32; //convert lowercase to uppercase
         }
     }
+    return s;
 }
