@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// Structure to store the phone records of a person
+// A program that stores the 3 parts of a phone number using structure
 struct PhoneRecord {
   string name;
   int areacode;
