@@ -81,3 +81,43 @@ int main()
     } while (option != 6);
 
     return 0;
+}
+
+// Function to add a new customer
+void addCustomer(Customer customers[], int &numCustomers)
+{
+    if (numCustomers == MAX_CUSTOMERS)
+    {
+        cout << "Maximum number of customers reached." << endl;
+    }
+    else
+    {
+        Customer newCustomer;
+        cout << "Enter customer name: ";
+        cin >> newCustomer.name;
+        cout << "Enter customer sex (m/f): ";
+        cin >> newCustomer.sex;
+        cout << "Enter customer address: ";
+        cin.ignore();
+        getline(cin, newCustomer.address);
+        newCustomer.sales = 0;
+
+        customers[numCustomers] = newCustomer;
+        cout << "Customer " << newCustomer.name << " added with ID " << numCustomers << endl;
+        numCustomers++;
+    }
+}
+
+// Function to record a sale for a customer
+void recordSale(Customer customers[], int numCustomers)
+{
+    int id;
+    cout << "Enter customer ID: ";
+    cin >> id;
+    if (id < 0 || id >= numCustomers)
+    {
+        cout << "Invalid customer ID." << endl;
+    }
+    else
+    {
+        double sale;
