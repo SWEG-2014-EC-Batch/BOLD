@@ -37,3 +37,22 @@ acceptNumber(number, choice);
 
         cout << "Do you want to perform another operation? (Y/N): ";
         cin >> choice;
+ } while (choice == 'Y' || choice == 'y');
+
+    cout << "Thank you for using the Data Encryption/Decryption Program!" << endl;
+    return 0;
+}
+
+// Function to accept a four-digit number and the choice of operation
+void acceptNumber(int &number, char &choice)
+{
+    int max_attempts = 4;
+    int num_attempts = max_attempts;
+
+    while (num_attempts > 0)
+    {
+        cout << "\nEnter a four-digit integer: ";
+        cin >> number;
+
+        if (number < 1000 || number > 9999)
+        {
