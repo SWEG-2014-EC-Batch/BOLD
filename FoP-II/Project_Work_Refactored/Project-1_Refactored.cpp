@@ -76,3 +76,51 @@ void acceptNumber(int &number, char &choice)
         cout << "Enter your choice:" << endl;
         cout << "1. Encrypt" << endl;
         cout << "2. Decrypt" << endl;
+        cin >> choice;
+
+        if (choice != '1' && choice != '2')
+        {
+            cout << "Invalid choice. Please enter a valid choice (1 or 2)." << endl;
+        }
+    } while (choice != '1' && choice != '2');
+}
+
+// Function to encrypt the array of digits
+void encrypt(int *digits)
+{
+    // Add 7 to each digit and take the remainder when divided by 10
+    for (int i = 0; i < 4; i++)
+    {
+        digits[i] = (digits[i] + 7) % 10;
+    }
+
+    // Swap the first and third digits, and then swap the second and fourth digits.
+    swap(digits[0], digits[2]);
+    swap(digits[1], digits[3]);
+}
+
+// Function to decrypt the array of digits
+void decrypt(int *digits)
+{
+    // Add 3 to each digit and take the remainder when divided by 10
+    for (int i = 0; i < 4; i++)
+    {
+        digits[i] = (digits[i] + 3) % 10;
+    }
+
+    // Swap the first and third digits, and then swap the second and fourth digits.
+    swap(digits[0], digits[2]);
+    swap(digits[1], digits[3]);
+}
+
+// Function to display the encrypted/decrypted result
+void displayResult(const int *digits)
+{
+    cout << "Result: ";
+    for (int i = 0; i < 4; i++)
+    {
+        cout << digits[i];
+    }
+    cout << endl;
+}
+
