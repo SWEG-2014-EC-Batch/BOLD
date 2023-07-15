@@ -84,3 +84,31 @@ void addCustomer(string names[], string sexes[], string addresses[], double sale
         cin.ignore();
         getline(cin, addresses[numCustomers]);
         sales[numCustomers] = 0;
+cout << "Customer " << names[numCustomers] << " added with ID " << numCustomers << endl;
+        numCustomers++;
+    }
+}
+
+// Function to record a sale for a customer
+void recordSale(string names[], double sales[], int numCustomers)
+{
+    int id;
+    cout << "Enter customer ID: ";
+    cin >> id;
+    if (id < 0 || id >= numCustomers)
+    {
+        cout << "Invalid customer ID." << endl;
+    }
+    else
+    {
+        double sale;
+        cout << "Enter sale amount: $";
+        cin >> sale;
+        sales[id] += sale;
+        cout << "Sale of $" << sale << " recorded for customer " << names[id] << endl;
+    }
+}
+
+// Print a report of all customers and their sales
+void printReport(const string names[], const string sexes[], const string addresses[], const double sales[], int numCustomers)
+{
