@@ -73,3 +73,17 @@ void printLowerHalf(int n)
         {                 // Iterate from n to i
             cout << "  "; // Print 2 spaces
         }
+ for (int j = 1; j <= (2 * i) - 1; j++)
+        { // Iterate from 1 to (2*i)-1
+            if (j <= i)
+            {
+                cout << (char)('A' + j - 1) << " "; // Print letter
+            }
+            else
+            {
+                cout << (char)('A' + (2 * i) - j - 1) << " "; // Print letter
+            }
+        }
+        cout << endl; // Move to next row
+    }
+}
