@@ -41,3 +41,43 @@ int main()
         cout << "\n\n";
         cout << "Welcome to the Customer Tracking Program!" << endl;
         cout << "This program allows you to track your customers and their purchases." << endl;
+        cout << "You can add new customers, record sales, print reports, and search for customers by ID or name." << endl;
+        cout << "Let's get started!" << endl;
+        cout << "\n\n";
+        cout << "1. Add new customer\n";
+        cout << "2. Record sale\n";
+        cout << "3. Print report\n";
+        cout << "4. Search customer by code\n";
+        cout << "5. Search customer by name\n";
+        cout << "6. Save and quit\n";
+
+        cout << "Enter option: ";
+        cin >> option;
+
+        switch (option)
+        {
+        case 1:
+            addCustomer(customers, numCustomers);
+            break;
+        case 2:
+            recordSale(customers, numCustomers);
+            break;
+        case 3:
+            printReport(customers, numCustomers);
+            break;
+        case 4:
+            searchByID(customers, numCustomers);
+            break;
+        case 5:
+            searchByName(customers, numCustomers);
+            break;
+        case 6:
+            saveData(customers, numCustomers);
+            break;
+        default:
+            cout << "Invalid option, please try again." << endl;
+            break;
+        }
+    } while (option != 6);
+
+    return 0;
