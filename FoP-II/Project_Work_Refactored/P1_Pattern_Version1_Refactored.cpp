@@ -28,3 +28,18 @@ cout << endl;
 // Function to get input from user
 void getInput(int &n)
 {
+   cout << "\n";
+    cout << "Welcome to the Hourglass pattern program!\n";
+    cout << "This program will print the character hourglass pattern up to a maximum input of 14.\n";
+    cout << "Enter the size of the pattern you want to print (at most 14): ";
+    cin >> n;
+    while (n > 14)
+    { // Check if input is greater than 14
+        cout << "Invalid input. Please enter a number at most 14: ";
+        cin >> n;
+    }
+}
+
+// Function to print upper half of pattern
+void printUpperHalf(int n)
+{
