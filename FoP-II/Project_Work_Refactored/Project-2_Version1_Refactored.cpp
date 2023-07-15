@@ -141,3 +141,23 @@ void searchByID(const string names[], const string sexes[], const string address
         cout << "Address: " << addresses[id] << endl;
         cout << "Total sales: $" << sales[id] << endl;
     }
+}
+
+// Search for a customer by name
+void searchByName(const string names[], const string sexes[], const string addresses[], const double sales[], int numCustomers)
+{
+    string name;
+    cout << "Enter customer name: ";
+    cin >> name;
+    bool found = false;
+    for (int i = 0; i < numCustomers; i++)
+    {
+        if (names[i] == name)
+        {
+            cout << "Customer ID: " << i << endl;
+            cout << "Sex: " << sexes[i] << endl;
+            cout << "Address: " << addresses[i] << endl;
+            cout << "Total sales: $" << sales[i] << endl;
+            found = true;
+            break;
+        }
