@@ -18,3 +18,22 @@ int main()
 
     do
     {
+acceptNumber(number, choice);
+
+        switch (choice)
+        {
+        case '1':
+            encrypt(&number);
+            displayResult(&number);
+            break;
+        case '2':
+            decrypt(&number);
+            displayResult(&number);
+            break;
+        default:
+            cout << "Invalid choice. Please enter a valid choice (1 or 2)." << endl;
+            break;
+        }
+
+        cout << "Do you want to perform another operation? (Y/N): ";
+        cin >> choice;
