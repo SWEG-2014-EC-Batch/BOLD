@@ -58,3 +58,18 @@ for (int i = n; i >= 1; i--)
             else
             {
                 cout << (char)('A' + (2 * i) - j - 1) << " "; // Print letter
+            }
+        }
+        cout << endl; // Move to next row
+    }
+}
+
+// Function to print lower half of pattern
+void printLowerHalf(int n)
+{
+    for (int i = 2; i <= n; i++)
+    { // Iterate from 2 to n
+        for (int k = n; k >= i; k--)
+        {                 // Iterate from n to i
+            cout << "  "; // Print 2 spaces
+        }
