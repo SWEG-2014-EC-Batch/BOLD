@@ -121,3 +121,44 @@ void recordSale(Customer customers[], int numCustomers)
     else
     {
         double sale;
+cout << "Enter sale amount: $";
+        cin >> sale;
+        customers[id].sales += sale;
+        cout << "Sale of $" << sale << " recorded for customer " << customers[id].name << endl;
+    }
+}
+
+// Print a report of all customers and their sales
+void printReport(Customer customers[], int numCustomers)
+{
+    double totalSales = 0;
+    cout << "Customer ID\tName\tSex\tAddress\tSales" << endl;
+    cout << "-----------------------------------------" << endl;
+    for (int i = 0; i < numCustomers; i++)
+    {
+        cout << i << "\t\t" << customers[i].name << "\t" << customers[i].sex << "\t" << customers[i].address << "\t$" << customers[i].sales << endl;
+        totalSales += customers[i].sales;
+    }
+    cout << "Total sales: $" << totalSales << endl;
+    cout << "Average sales per customer: $" << (totalSales / numCustomers) << endl;
+}
+
+// Search for a customer by ID
+void searchByID(Customer customers[], int numCustomers)
+{
+    int id;
+    cout << "Enter customer ID: ";
+    cin >> id;
+    if (id < 0 || id >= numCustomers)
+    {
+        cout << "Invalid customer ID." << endl;
+    }
+    else
+    {
+        cout << "Customer name: " << customers[id].name << endl;
+        cout << "Sex: " << customers[id].sex << endl;
+        cout << "Address: " << customers[id].address << endl;
+        cout << "Total sales: $" << customers[id].sales << endl;
+    }
+}
+
