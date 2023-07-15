@@ -162,3 +162,42 @@ void searchByID(Customer customers[], int numCustomers)
     }
 }
 
+// Search for a customer by name
+void searchByName(Customer customers[], int numCustomers)
+{
+    string name;
+    cout << "Enter customer name: ";
+    cin >> name;
+    bool found = false;
+    for (int i = 0; i < numCustomers; i++)
+    {
+        if (customers[i].name == name)
+        {
+            cout << "Customer ID: " << i << endl;
+            cout << "Sex: " << customers[i].sex << endl;
+            cout << "Address: " << customers[i].address << endl;
+            cout << "Total sales: $" << customers[i].sales << endl;
+            found = true;
+            break;
+        }
+    }
+    if (!found)
+    {
+        cout << "Customer not found." << endl;
+    }
+}
+
+// Save customer data to a file
+void saveData(Customer customers[], int numCustomers)
+{
+    ofstream file("C:\\Users\\lenovo\\Desktop\\SE Program Files\\Project2Version2\\customer_data.txt");
+    if (file.is_open())
+    {
+        file << numCustomers << endl;
+        for (int i = 0; i < numCustomers; i++)
+        {
+            file << customers[i].name << endl;
+            file << customers[i].sex << endl;
+            file << customers[i].address << endl;
+            file << customers[i].sales << endl;
+        }
