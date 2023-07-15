@@ -161,3 +161,5 @@ void searchByName(const string names[], const string sexes[], const string addre
             found = true;
             break;
         }
+    }
+}
