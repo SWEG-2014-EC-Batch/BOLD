@@ -55,3 +55,32 @@ int main()
         case 5:
             searchByName(names, sexes, addresses, sales, numCustomers);
             break;
+ case 6:
+            cout << "Exiting the program. Goodbye!" << endl;
+            break;
+        default:
+            cout << "Invalid option, please try again." << endl;
+            break;
+        }
+    } while (option != 6);
+
+    return 0;
+}
+
+// Function to add a new customer
+void addCustomer(string names[], string sexes[], string addresses[], double sales[], int& numCustomers)
+{
+    if (numCustomers == MAX_CUSTOMERS)
+    {
+        cout << "Maximum number of customers reached." << endl;
+    }
+    else
+    {
+        cout << "Enter customer name: ";
+        cin >> names[numCustomers];
+        cout << "Enter customer sex (m/f): ";
+        cin >> sexes[numCustomers];
+        cout << "Enter customer address: ";
+        cin.ignore();
+        getline(cin, addresses[numCustomers]);
+        sales[numCustomers] = 0;
