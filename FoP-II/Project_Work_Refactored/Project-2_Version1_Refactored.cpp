@@ -26,3 +26,32 @@ int main()
         cout << "Welcome to the Customer Tracking Program!" << endl;
         cout << "This program allows you to track your customers and their purchases." << endl;
         cout << "You can add new customers, record sales, print reports, and search for customers by ID or name." << endl;
+        cout << "Let's get started!" << endl;
+        cout << "\n\n";
+        cout << "1. Add new customer\n";
+        cout << "2. Record sale\n";
+        cout << "3. Print report\n";
+        cout << "4. Search customer by code\n";
+        cout << "5. Search customer by name\n";
+        cout << "6. Exit\n";
+
+        cout << "Enter option: ";
+        cin >> option;
+
+        switch (option)
+        {
+        case 1:
+            addCustomer(names, sexes, addresses, sales, numCustomers);
+            break;
+        case 2:
+            recordSale(names, sales, numCustomers);
+            break;
+        case 3:
+            printReport(names, sexes, addresses, sales, numCustomers);
+            break;
+        case 4:
+            searchByID(names, sexes, addresses, sales, numCustomers);
+            break;
+        case 5:
+            searchByName(names, sexes, addresses, sales, numCustomers);
+            break;
