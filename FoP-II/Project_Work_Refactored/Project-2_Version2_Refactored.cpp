@@ -201,3 +201,39 @@ void saveData(Customer customers[], int numCustomers)
             file << customers[i].address << endl;
             file << customers[i].sales << endl;
         }
+file.close();
+        cout << "Customer data saved successfully." << endl;
+    }
+    else
+    {
+        cout << "Unable to save customer data." << endl;
+    }
+}
+
+// Load customer data from a file
+int loadData(Customer customers[])
+{
+    ifstream file("C:\\Users\\lenovo\\Desktop\\SE Program Files\\Project2Version2\\customer_data.txt");
+    int numCustomers = 0;
+    if (file.is_open())
+    {
+        file >> numCustomers;
+        file.ignore();
+        for (int i = 0; i < numCustomers; i++)
+        {
+            getline(file, customers[i].name);
+            getline(file, customers[i].sex);
+            getline(file, customers[i].address);
+            file >> customers[i].sales;
+            file.ignore();
+        }
+        file.close();
+        cout << "Customer data loaded successfully." << endl;
+    }
+    else
+    {
+        cout << "Unable to load customer data." << endl;
+    }
+    return numCustomers;
+}
+
