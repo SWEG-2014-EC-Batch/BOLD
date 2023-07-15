@@ -56,3 +56,23 @@ void acceptNumber(int &number, char &choice)
 
         if (number < 1000 || number > 9999)
         {
+ num_attempts--;
+   cout << "The number entered is not a four-digit integer. Please enter another number with four digits." << endl;
+   cout << "You have " << num_attempts << " attempts left." << endl;
+
+            continue;
+        }
+        break;
+    }
+
+    if (num_attempts == 0)
+    {
+        cout << "Sorry, you have run out of attempts. Exiting program." << endl;
+        exit(0);
+    }
+
+    do
+    {
+        cout << "Enter your choice:" << endl;
+        cout << "1. Encrypt" << endl;
+        cout << "2. Decrypt" << endl;
