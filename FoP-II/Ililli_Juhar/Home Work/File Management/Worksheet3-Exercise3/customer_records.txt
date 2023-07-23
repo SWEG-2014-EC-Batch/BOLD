@@ -1,0 +1,5 @@
+1000 Ililli Juhar 5000000000.0
+1001 Liya Kebede 3500.0
+1002 Haile Gebrselassie 12000.0
+1003 Tirunesh Dibaba 8000.0
+1004 Kenenisa Bekele 15000.0
