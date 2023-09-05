@@ -1,26 +1,52 @@
-/*In this code, we create a map called `m` that holds strings 
-as keys and integers as values.
-We then insert some key-value pairs into the map. 
-Next, we find the value associated with the key "apple" in the 
-map and store it in a variable called `value`.
-Finally, we print out the value of the key*/
+/*using multimaps with some advanced functions*/
 
 #include <iostream>
 #include <map>
+
 using namespace std;
+
 int main() {
-  // Create a map of strings to integers
-  map<string, int> m;
+  // Create a multimap of student names and their grades.
+  multimap<string, int> students;
 
-  // Insert some key-value pairs into the map
-  m["apple"] = 100;
-  m["banana"] = 200;
-  m["cherry"] = 300;
+  // Insert some student records.
+  students.emplace("John Doe", 80); // using emplace() instead of insert()
+  students.insert({"Jane Doe", 90});
+  students.insert({"Peter Smith", 70});
+  students.insert({"Mary Johnson", 100});
 
-// Find the value of the key "apple"
-  int value = m["apple"];
+  // Print the multimap.
+  for (const auto& student : students) {
+    cout << student.first << ", " << student.second << endl;
+  }
 
-// Print the value
-  cout << "The value of the key 'apple' is " << value << endl;
-return 0;
+  // Check if a student exists.
+  if (students.count("John Doe") > 0) { // using count() instead of find()
+    cout << "John Doe exists in the multimap." << endl;
+  }
+
+  // Get the grade of a student.
+  auto it = students.find("Jane Doe");
+  if (it != students.end()) {
+    int grade = it->second;
+    cout << "Jane Doe's grade is " << grade << endl;
+  }
+
+  // Add a new student record.
+  students.emplace("Susan Williams", 95); // using emplace() instead of insert()
+
+  // Print the multimap again.
+  for (const auto& student : students) {
+    cout << student.first << ", " << student.second << endl;
+  }
+
+  // Remove a student record.
+  students.erase("Peter Smith");
+
+  // Print the multimap again.
+  for (const auto& student : students) {
+    cout << student.first << ", " << student.second << endl;
+  }
+
+  return 0;
 }
