@@ -1,1 +1,6 @@
-
+68,selam,34,Senior,4567,5,Hourly,56,8,6.95178e-310,1.49545e-311
+44,Tihitina,45,Executive,450,67,Salaried,0,0,0,0
+56,kia,36,Senior,4567,7,Commissioned,56,8,89,3456
+34,abebe,26,Mid-Level,4567,4,Salaried,0,32759,6.95178e-310,1.49545e-311
+1234,demeke,50,Executive,0,25,Hourly,2,12,0,0
+1,kebede,1,Junior,0,1,Hourly,1,1,0,0
