@@ -458,4 +458,153 @@ public:
 
                 emp.setEmployeeInfo(hourlyRate, hoursWorked, salary, commissionRate, sales, age, yearOfWork);
  
-           
+           // Update the employee's information
+                emp.setName(newName);
+
+                cout << "\n";
+                cout << "\t\t\t+----------------------------------+\n";
+                cout << "\t\t\t|  Employee record updated         |\n";
+                cout << "\t\t\t|  successfully.                   |\n";
+                cout << "\t\t\t+----------------------------------+\n";
+                break; // Exit the loop after updating the record
+            }
+        }
+
+        if (!found)
+        {
+            cout << "\tNo matching employee found for '" << searchKey << "'.\n";
+        }
+    }               
+
+    // Search for an employee by ID or name and display the result as a table
+    void searchEmployee(const string &searchKey)
+    {
+        vector<Employee> matchingEmployees;
+
+        // Search for employees matching the searchKey (either ID or name)
+        for (const Employee &emp : employees)
+        {
+            if (emp.getId() == searchKey || emp.getName() == searchKey)
+            {
+                matchingEmployees.push_back(emp);
+            }
+        }
+
+        if (matchingEmployees.empty())
+        {
+            cout << "\n";
+            cout << "\t\t+----------------------------------+\n";
+            cout << "\t\t|   No matching employees found    |\n";
+            cout << "\t\t+----------------------------------+\n";
+            cout << "\tpress any key to go back: ";
+            char opt;
+            cin >> opt;
+        }
+        else
+        {
+            // Display the matching employees in a table
+            clearScreen();
+            logo();
+            printTableHeader();
+            for (const Employee &emp : matchingEmployees)
+            {
+                printEmployee(emp);
+            }
+            cout << "\t\t+-----------------+--------------------+-----------------+-----------------+------------+" << endl;
+            cout << "\t\tSearch results\n";
+            cout << "\tpress any key to go back: ";
+            char opt;
+            cin >> opt;
+        }
+    }
+
+    void settings()
+    { // Settings function
+    loop3:
+        clearScreen();
+        logo();
+        displayEmployeesTable();
+
+        // Display Menu
+        cout << "\n\t\t=================================|MENU|=======================================\n";
+        cout << "\t\t\t1.Search for a Record\n";         // Placeholder for search functionality
+        cout << "\t\t\t2.Sort Entries (A-Z) selected\n"; // Placeholder for sorting functionality
+        cout << "\t\t\t3.Sort Entries (Z-A) selected\n";
+        cout << "\t\t\t4.Edit/Modify Record \n";
+        cout << "\t\t\t5.Delete \n";
+        cout << "\t\t\t6.Go back\n";
+        cout << "\tOption: ";
+        char opt;
+        cin >> opt;
+        switch (opt)
+        {
+        case '1':
+        { // prompt the user for the name or ID to search for
+
+            string searchKey;
+            cout << "\t\tEnter the name or ID to search for: ";
+            cin >> searchKey;
+            searchEmployee(searchKey);
+            goto loop3;
+            break;
+        }
+        case '2':
+        { // sort the employees in ascending order by name
+            sort(employees.begin(), employees.end(), compareEmployeesByNameAscending);
+            goto loop3;
+            break;
+        }
+        case '3':
+        { // sort the employees in descending order by name
+            sort(employees.begin(), employees.end(), compareEmployeesByNameDesending);
+            goto loop3;
+            break;
+        }
+        case '4':
+        { // prompt the user for the name or ID of the employee to edit
+
+            string searchKey;
+            cout << "\tEnter the name or ID of the employee to edit: ";
+            cin >> searchKey;
+            editEmployeeRecord(employees, searchKey);
+            cout << "\tpress any key to go back: ";
+            char opt;
+            cin >> opt;
+            clearScreen();
+            goto loop3;
+            break;
+        }
+        case '5':
+        { // prompt the user for the ID or name of the employee to delete
+            string searchKey;
+cout << "\t\tEnter the ID or name of the employee to delete: ";
+            cin >> searchKey;
+            deleteEmployeeByNameOrId(searchKey);
+            cout << "\tpress any key to go back: ";
+            char opt;
+            cin >> opt;
+            clearScreen();
+            goto loop3;
+            break;
+            break;
+        }
+        case '6':
+        { // break out of the loop to return to the main menu
+            break;
+        }
+
+        default: // print an error message if the user entered an invalid choice
+            cout << "Invalid choice. Please try again.\n";
+            break;
+        }
+        clearScreen();
+        logo();
+    }
+    // Clears all records from the employees vector.
+    void clearAllRecords()
+    {
+        employees.clear();
+    }
+    // Prints a table of all employees in the system.
+    void displayEmployeesTable() const
+    {
