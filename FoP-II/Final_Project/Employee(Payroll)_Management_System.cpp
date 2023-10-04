@@ -156,3 +156,154 @@ public:
     }
     // Static function to compare employees based on salary and years of experience
     bool static compareEmployees(const Employee &emp1, const Employee &emp2)
+{
+
+        if (emp1.salary == emp2.salary)
+        {
+            return emp1.yearsOfWork > emp2.yearsOfWork;
+        }
+        return emp1.calculatePay() > emp2.calculatePay();
+    }
+    // Determine the employment level based on years of work
+    string getLevel() const
+    {
+        if (this->yearsOfWork < 2)
+        {
+            return "Junior";
+        }
+        else if (this->yearsOfWork < 5)
+        {
+            return "Mid-Level";
+        }
+        else if (this->yearsOfWork < 10)
+        {
+            return "Senior";
+        }
+        else
+        {
+            return "Executive";
+        }
+    }
+    // Get the rank of the employee within a vector of employees
+    int getRank(const vector<Employee> &employees) const
+    {
+        // Sort employees based on the comparison function
+        vector<Employee> sortedEmployees = employees;
+        sort(sortedEmployees.begin(), sortedEmployees.end(), compareEmployees);
+
+        // Find the rank of this employee
+        for (int i = 0; i < sortedEmployees.size(); ++i)
+        {
+            if (sortedEmployees[i].name == this->name)
+            {
+                return i + 1; // Adding 1 to convert from zero-based index to rank
+            }
+        }
+
+        // Return -1 if this employee is not found
+        return -1;
+    }
+    // Check if the employee is retired (retirement age is 65)
+    bool isRetired() const
+    {
+        return yearsOfWork >= 65; // Retirement age is 65
+    }
+    // Set employee information
+    void setEmployeeInfo(double hourlyRate, int hoursWorked, double salary, double commissionRate, double sales, int age, int yearOfWork)
+    {
+        this->hourlyRate = hourlyRate;
+        this->hoursWorked = hoursWorked;
+        this->salary = salary;
+        this->commissionRate = commissionRate;
+        this->sales = sales;
+        this->age = age;
+        this->yearsOfWork = yearOfWork;
+    }
+    // Calculate the monthly payment after retirement (70% of salary)
+    double calculateMonthlyPaymentAfterRetirement() const
+    {
+        return isRetired() ? (salary * 0.7) : 0.0;
+    }
+};
+
+// Function Template class for PayrollSystem
+template <typename T>
+class PayrollSystem
+{
+private:
+    vector<T> employees; // Vector to store employees
+
+public:
+    void saveToFile(const string &filename) const
+    { // Save employee data to a file in CSV format
+        ofstream outputFile(filename);
+        if (!outputFile)
+        {
+            cerr << "Error: Unable to open the file for writing." << endl;
+            return;
+        }
+
+        for (const Employee &emp : employees)
+        {
+            // Save all employee attributes in CSV format
+            outputFile << emp.getId() << "," << emp.getName() << "," << emp.getAge() << ","
+                       << emp.getLevel() << "," << emp.getSalary() << ","
+                       << emp.getYearsOfWork() << "," << emp.getType() << ","
+                       << emp.getHourlyRate() << "," << std::to_string(emp.getHoursWorked()) << ","
+                       << emp.getCommissionRate() << "," << emp.getSales() << endl;
+        }
+
+        outputFile.close();
+    }
+    // Load employee data from a file in CSV format
+    void loadFromFile(const string &filename)
+    {
+        ifstream inputFile(filename);
+        if (!inputFile)
+        {
+            cerr << "Error: Unable to open the file for reading." << endl;
+            return;
+        }
+
+        employees.clear(); // Clear existing data
+
+        string line, yearsOfWorkst1r;
+        while (getline(inputFile, line))
+        {
+            istringstream iss(line);
+            string id, name, level, salaryStr, ageStr, type, hourlyRateStr, yearsOfWorkStr, hoursWorkedStr, commissionRateStr, salesStr;
+            double salary, hourlyRate, commissionRate, sales;
+            int age, hoursWorked, yearsOfWork;
+
+            if (getline(iss, id, ',') && getline(iss, name, ',') && getline(iss, ageStr, ',') &&
+                getline(iss, level, ',') && getline(iss, salaryStr, ',') && getline(iss, yearsOfWorkStr, ',') &&
+                getline(iss, type, ',') && getline(iss, hourlyRateStr, ',') && getline(iss, hoursWorkedStr, ',') &&
+                getline(iss, commissionRateStr, ',') && getline(iss, salesStr))
+            {
+                salary = stod(salaryStr);
+                age = stoi(ageStr);
+
+                std::istringstream iss(yearsOfWorkStr); // Convert string to int
+                if (iss >> yearsOfWork)
+                {
+                }
+                else
+                {
+                    yearsOfWork = 0;
+                }
+
+                yearsOfWorkst1r = yearsOfWorkStr;
+                hourlyRate = stod(hourlyRateStr);
+                hoursWorked = stoi(hoursWorkedStr);
+                commissionRate = stod(commissionRateStr);
+                sales = stod(salesStr);
+
+                Employee emp(id, name, type);
+
+                emp.setEmployeeInfo(hourlyRate, hoursWorked, salary, commissionRate, sales, age, yearsOfWork);
+
+                employees.push_back(emp);
+            }
+        }
+
+        inputFile.close();
