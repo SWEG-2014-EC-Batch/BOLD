@@ -307,3 +307,155 @@ public:
         }
 
         inputFile.close();
+  }
+    // Add an employee to the system
+    void addEmployee(const T &emp)
+    { // Add employee
+        employees.push_back(emp);
+    }
+
+    void printTableHeader() const
+    { // Print table header
+        cout << "\t\t+------+-------------------+--------------+------------+--------------+-----------------+" << endl;
+        cout << "\t\t|  ID  |       Name        |     Type     |    Rank    |    Level     |   Experience    |" << endl;
+        cout << "\t\t+------+-------------------+--------------+------------+--------------+-----------------+" << endl;
+    }
+
+    void printEmployee(const T &emp) const
+    { // Print employee information
+        cout << "\t\t| " << left << setw(5) << emp.getId() << " | " << setw(17) << emp.getName() << " | " << setw(12) << emp.getType()
+             << " | #" << setw(9) << fixed << setprecision(2) << emp.getRank(employees) << " | " << setw(12) << emp.getLevel()
+             << " | " << setw(14) << emp.getYearsOfWork() << " |" << endl;
+    }
+    // Static function to compare employees by name in ascending and desending order
+    bool static compareEmployeesByNameAscending(const Employee &emp1, const Employee &emp2)
+    {
+        return emp1.getName() < emp2.getName();
+    }
+    bool static compareEmployeesByNameDesending(const Employee &emp1, const Employee &emp2)
+    {
+        return emp1.getName() > emp2.getName();
+    }
+    void determineRetirement()
+    { // Determine retirement status for employees
+        clearScreen();
+        logo();
+        // Print the table header
+        cout << "\t\t=========================================|Retirement|===================================\n";
+        cout << "\t\t+------+-------------------+--------------+------------+--------------+-----------------+" << endl;
+        cout << "\t\t|  ID  |       Name        |     Type     |    Rank    |  is_Retired  |    Pension      |" << endl;
+        cout << "\t\t+------+-------------------+--------------+------------+--------------+-----------------+" << endl;
+
+        // Loop through each employee to determine retirement status
+        for (const Employee &emp : employees)
+        {
+            // Determine retirement status
+            string retirementStatus = emp.isRetired() ? "Retired" : "Active";
+
+            // Calculate monthly pension after retirement
+            double monthlyPension = emp.calculateMonthlyPaymentAfterRetirement();
+
+            // Display employee information in the table format
+            cout << "\t\t| " << setw(5) << emp.getId() << " | " << setw(17) << emp.getName() << " | "
+                 << setw(12) << emp.getType() << " | " << setw(10) << emp.getRank(employees) << " | "
+                 << setw(12) << retirementStatus << " | $" << setw(14) << fixed << setprecision(2) << monthlyPension << " |" << endl;
+        }
+
+        // Print the table footer
+        cout << "\t\t+------+-------------------+--------------+------------+--------------+-----------------+" << endl;
+        cout << "\n\tpress anykey to go back ";
+        char opt;
+        cin >> opt;
+        clearScreen();
+        logo();
+    }
+
+    void deleteEmployeeByNameOrId(string searchKey)
+    {
+        bool found = false;
+
+        // Iterate through the employees and look for a match by name or ID
+        for (auto it = employees.begin(); it != employees.end(); ++it)
+        {
+            if (it->getId() == searchKey || it->getName() == searchKey)
+            {
+                // Employee found, erase it from the vector
+                it = employees.erase(it);
+                cout << "\t\tEmployee record deleted successfully.\n";
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            cout << "\n";
+            cout << "\t\t\t+----------------------------------+\n";
+            cout << "\t\t\t|  No matching employees found    |\n";
+            cout << "\t\t\t|  for '" << searchKey << "'.         |\n";
+            cout << "\t\t\t+----------------------------------+\n";
+        }
+    }
+
+    // Function to edit an existing employee record
+    void editEmployeeRecord(vector<Employee> &employees, const string &searchKey)
+    {
+        clearScreen();
+        logo();
+        displayEmployeesTable();
+        bool found = false;
+
+        for (Employee &emp : employees)
+        {
+            if (emp.getId() == searchKey || emp.getName() == searchKey)
+            {
+                found = true;
+
+                cout << "\t\tEditing employee record for: " << emp.getName() << endl;
+
+                // Ask the user to enter updated information
+                string newName;
+
+                string name, type;
+                int empId, age, yearOfWork;
+                double hourlyRate, salary, commissionRate, sales;
+                int hoursWorked;
+                double newSalary;
+
+                cout << "\t\tEnter new name: ";
+                cin.ignore(); // Clear the newline character from previous input
+                getline(cin, newName);
+
+                cout << "\t\tEnter employee Age: ";
+                cin >> age;
+                cout << "\t\tEnter year of work: ";
+                cin >> yearOfWork;
+
+                type = emp.getType();
+
+                if (type == "Hourly" || type == "h")
+                {
+
+                    cout << "\t\tEnter hourly rate: ";
+                    cin >> hourlyRate;
+                    cout << "\t\tEnter hours worked: ";
+                    cin >> hoursWorked;
+                }
+                else if (type == "Salaried" || type == "s")
+                {
+
+                    cout << "\t\tEnter salary: ";
+                    cin >> salary;
+                }
+                else if (type == "Commissioned" || type == "c")
+                {
+
+                    cout << "\t\tEnter commission rate: ";
+                    cin >> commissionRate;
+                    cout << "\t\tEnter sales: ";
+                    cin >> sales;
+                }
+
+                emp.setEmployeeInfo(hourlyRate, hoursWorked, salary, commissionRate, sales, age, yearOfWork);
+ 
+           
