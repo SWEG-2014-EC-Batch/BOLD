@@ -760,3 +760,150 @@ int main()
                 type = "Hourly";
                 cout << "\t\tEnter hourly rate: ";
                 cin >> hourlyRate;
+      cout << "\t\tEnter hours worked: ";
+                cin >> hoursWorked;
+            }
+            else if (type == "S" || type == "s")
+            {
+                type = "Salaried";
+                cout << "\t\tEnter salary: ";
+                cin >> salary;
+            }
+            else if (type == "C" || type == "c")
+            {
+                type = "Commissioned";
+                cout << "\t\tEnter commission rate: ";
+                cin >> commissionRate;
+                cout << "\t\tEnter sales: ";
+                cin >> sales;
+            }
+
+            // A pointer to an Employee object
+            Employee *newEmployee = new Employee(id, name, type);
+            newEmployee->setEmployeeInfo(hourlyRate, hoursWorked, salary, commissionRate, sales, age, yearOfWork);
+
+            // Add the employee to the payroll using the pointer
+            payroll.addEmployee(*newEmployee);
+
+            // Deallocating the memory when done
+            delete newEmployee;
+
+            cout << "\t press anykey to add q to Exit:";
+            char opt;
+            cin >> opt;
+            if (opt != 'q')
+            {
+
+                goto loop2;
+            }
+            clearScreen();
+            logo();
+            break;
+        }
+
+        case '2':
+            payroll.settings(); // Display Employees
+            break;
+        case '3':
+            payroll.producePayroll(); // Produce Payroll
+            break;
+        case '4':
+            payroll.determineRetirement();
+            // Determine Retirement
+            break;
+        case '5':
+            payroll.produceStatisticalReport(); // Produce Statistical Report
+            break;
+        case '6':
+        { // Clear all records
+            cout << "\tAre you sure you want to clear all records? (Y/N): ";
+            char confirm;
+            cin >> confirm;
+            if (confirm == 'Y' || confirm == 'y')
+            {
+                payroll.clearAllRecords();
+                // payroll.saveToFile(filename);
+                cout << "\tAll records have been cleared.\n";
+            }
+            else
+            {
+                cout << "\tClearing operation canceled.\n";
+            }
+            cout << "\tpress any key to go back: ";
+            char opt;
+            cin >> opt;
+            clearScreen();
+            logo();
+            break;
+        }
+        case '7':
+            payroll.saveToFile(filename);     // Save to file
+            cout << "Exiting the program.\n"; // EXIT
+            break;
+        default:
+            clearScreen();
+            logo();
+            cout << "Invalid choice. Please try again.\n";
+            break;
+        }
+    } while (choice != '7');
+
+    return 0;
+}
+// A function that displays the admin login page
+void admin()
+{
+loop1:
+    logo();
+    cout << "                                               ================" << std::endl;
+    cout << "+---------------------------------------------|  ADMIN LOGIN   |--------------------------------------------------+" << endl;
+    cout << "                                               ================" << std::endl;
+
+    cout << "\n\t\tWelcome to the Employee/Payroll Management System, press 0 to Exit\n";
+    cout << "\n";
+
+    std::string username, password;
+
+    // Ask for username and password
+
+    cout << "\t\t+------------------+" << std::endl;
+    cout << "\t\t|   Username:      |" << std::endl;
+    cout << "\t\t+------------------+" << std::endl;
+    cout << "\t\t-->";
+    std::cin >> username;
+    if (username == "0")
+    {
+        clearScreen();
+        cout << "Exiting the program.\n";
+        exit(0);
+    }
+
+    cout << "\t\t+------------------+" << std::endl;
+    cout << "\t\t|   Password:      |" << std::endl;
+    cout << "\t\t+------------------+" << std::endl;
+
+    cout << "\t\t-->";
+    std::cin >> password;
+    // The username and password is "admin" for the time being
+    if (username == "admin" && password == "admin")
+    {
+        cout << "\t\tLogin successful! Welcome, Admin.\n";
+    }
+    else
+    {
+        cout << "\t\tLogin failed. Please check your username and password.\n";
+        clearScreen();
+        goto loop1;
+    }
+}
+void clearScreen()
+{ // Clear the screen
+#ifdef _WIN32
+  // For Windows
+    system("cls");
+#else
+  // For Linux and other Unix-like systems
+    cout << "\033[2J\033[1;1H";
+#endif
+}
+
