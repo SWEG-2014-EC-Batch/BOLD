@@ -899,11 +899,7 @@ loop1:
 void clearScreen()
 { // Clear the screen
 #ifdef _WIN32
-  // For Windows
     system("cls");
-#else
-  // For Linux and other Unix-like systems
-    cout << "\033[2J\033[1;1H";
 #endif
 }
 
