@@ -608,3 +608,155 @@ cout << "\t\tEnter the ID or name of the employee to delete: ";
     // Prints a table of all employees in the system.
     void displayEmployeesTable() const
     {
+
+        cout << "\n";
+        printTableHeader();
+        for (const T &emp : employees)
+        {
+            printEmployee(emp);
+        }
+        cout << "\t\t+-----------------+--------------------+-----------------+-----------------+------------+" << endl;
+    }
+    // Prints a payroll report for all employees in the system.
+    void producePayroll() const
+    {
+        clearScreen();
+        logo();
+        cout << "\n";
+        cout << "\t\t\t\t ========================|Payroll|========================\n";
+        cout << "\t\t\t\t+------+--------------------+--------------+-------------+" << endl;
+        cout << "\t\t\t\t|  ID  |       Name         |     Type     |   Net Pay   |" << endl;
+        cout << "\t\t\t\t+------+--------------------+--------------+-------------+" << endl;
+
+        for (const T &emp : employees)
+        {
+            cout << "\t\t\t\t| " << setw(5) << emp.getId() << " | " << setw(17) << emp.getName() << " | " << setw(12) << emp.getType() << " | $" << setw(9) << fixed << setprecision(2) << emp.calculatePay() << " |" << endl;
+            cout << "\t\t\t\t+------+-------------------+--------------+-------------+" << endl;
+        }
+        cout << "\n \t\t\tpress anykey to go back: ";
+        char opt;
+        cin >> opt;
+        clearScreen();
+        logo();
+    }
+    // Computes the experience of all employees in the system.
+    void computeExperienceForAll()
+    {
+        for (T &emp : employees)
+        {
+            emp.computeExperience();
+        }
+    }
+    // Classifies all employees in the system based on their experience.
+    void classifyEmployeesForAll()
+    {
+        for (T &emp : employees)
+        {
+            emp.classifyEmployee();
+        }
+    }
+    // Prints a statistical report of all employees in the system.
+    void produceStatisticalReport() const
+    {
+        int activeEmployees = 0;
+        int retiredEmployees = 0;
+        double totalSalary = 0.0;
+
+        for (const T &emp : employees)
+        {
+            if (emp.isRetired())
+            {
+                retiredEmployees++;
+            }
+            else
+            {
+                activeEmployees++;
+                totalSalary += emp.calculatePay();
+            }
+        }
+        clearScreen();
+        logo();
+        cout << "\t\t\t\t ========================================\n";
+        cout << "\t\t\t\t          Statistical Report             \n";
+        cout << "\t\t\t\t ========================================\n";
+        cout << "\t\t\t\t Active Employees: " << activeEmployees << "                  \n";
+        cout << "\t\t\t\t Retired Employees: " << retiredEmployees << "                \n";
+        cout << "\t\t\t\t Salary of Active Employees: $" << totalSalary << "           \n";
+        cout << "\t\t\t\t ========================================\n";
+        cout << "\n\t\t\t press anykey to go back:";
+        char opt;
+        cin >> opt;
+        clearScreen();
+        logo();
+    }
+};
+
+int main()
+{
+    splash();
+    clearScreen();
+    string filename = "employee_data.txt"; // File to save/load employee data
+
+    // Load employee data from the file at the beginning (if it exists)
+    PayrollSystem<Employee> payroll;
+    payroll.loadFromFile(filename);
+    admin();
+    clearScreen();
+
+    logo();
+    char choice;
+    do
+    {
+        payroll.saveToFile(filename);
+
+        // Display the Main menu
+        cout << "\n";
+        printf("\t\t\t\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\n");
+        cout << "\t\t\t\xB2                   -+-Payroll Management System-+-                     \xB2\n";
+        printf("\t\t\t\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2|\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\n");
+        cout << "\t\t\t**                                                                      **\n";
+        cout << "\t\t\t**             1.Add Employee                                           **\n";
+        cout << "\t\t\t**             2.Manage Employees                                       **\n";
+        cout << "\t\t\t**             3.Produce Payroll                                        **\n";
+        cout << "\t\t\t**             4.Determine Retirement                                   **\n";
+        cout << "\t\t\t**             5.Produce Statistical Report                             **\n";
+        cout << "\t\t\t**             6.Clear The Record                                       **\n";
+        cout << "\t\t\t**             7.Exit                                                   **\n";
+        cout << "\t\t\t**                                                                      **\n";
+
+        cout << "\t\t\t**   Plese Input Your Option: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case '1':
+        { // Add a new employee
+            clearScreen();
+            logo();
+
+            string id;
+            string name, type;
+            int empId, age, yearOfWork;
+            double hourlyRate, salary, commissionRate, sales;
+            int hoursWorked;
+            cout << "\n\n\t\t +----------------------------------Record Employee Data--------------------------------+ \n";
+        loop2:
+            cout << "\t\tEnter employee ID: ";
+            cin >> id;
+            cin.ignore();
+            cout << "\t\tEnter employee name: ";
+            getline(cin, name);
+
+            cout << "\t\tEnter employee Age: ";
+            cin >> age;
+            cout << "\t\tEnter yearOfWork: ";
+            cin >> yearOfWork;
+            ;
+            cout << "\t\tEnter employee type (Hourly[H]/Salaried[S]/Commissioned[C]): ";
+            cin >> type;
+
+            if (type == "H" || type == "h")
+            {
+                type = "Hourly";
+                cout << "\t\tEnter hourly rate: ";
+                cin >> hourlyRate;
