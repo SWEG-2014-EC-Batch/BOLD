@@ -8,7 +8,7 @@
 #include "logo.h"
 using namespace std;
 
-// An Employee/Payroll Management System
+// Employee/Payroll Management System
 
 void admin();       // Function to handle admin login
 void clearScreen(); // Function to clear the screen
