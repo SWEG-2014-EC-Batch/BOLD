@@ -8,7 +8,7 @@ The user interface is intuitive, featuring a menu-driven navigation system, tabu
 
 ## Features
 
-### 1. Employee Details Recording
+### Employee Details Recording
 
 The system allows users to input and manage essential employee details, including:
 
@@ -23,35 +23,35 @@ The system allows users to input and manage essential employee details, includin
 - Commission Rate (for Commissioned employees)
 - Sales (for Commissioned employees)
 
-### 2. Set Employment Level and Salary
+### Set Employment Level and Salary
 
 The system automatically determines employment levels (Junior, Intermediate, Senior) based on an employee's salary. It also offers the flexibility to set or modify an employee's salary.
 
-### 3. Produce Payroll
+### Produce Payroll
 
 The system calculates and generates payroll for all employees based on their employee type. It computes salaries for Salaried employees, hourly wages for Hourly employees, and commissions for Commissioned employees.
 
-### 4. Compute Experience
+### Compute Experience
 
 The system calculates an employee's years of experience using their birth year and the current year.
 
-### 5. Employee Classification (Category)
+### Employee Classification (Category)
 
 Employees are automatically classified into categories (e.g., Junior, Intermediate, Senior) based on their years of work.
 
-### 6. Rank Employees
+### Rank Employees
 
 Employees are ranked based on their salary and years of experience, providing valuable insights into their positions within the organization.
 
-### 7. Determine Retirement
+### Determine Retirement
 
 The system checks an employee's retirement eligibility, which is set at a constant age of 65. It provides information regarding an employee's retirement status.
 
-### 8. Monthly Payment After Retirement
+### Monthly Payment After Retirement
 
 For retired employees, the system calculates the monthly payment, which amounts to 70% of their last known salary.
 
-### 9. Statistical Reports
+### Statistical Reports
 
 The system generates informative statistical reports, including:
 
@@ -60,23 +60,23 @@ The system generates informative statistical reports, including:
 
 ## General Project Requirements
 
-### 4.1 Menu-Driven Interface
+### Menu-Driven Interface
 
 The project boasts an easy-to-navigate master table menu that simplifies user interactions and facilitates the execution of required operations.
 
-### 4.2 Tabular Output Format
+### Tabular Output Format
 
 All output data, whether it's employee details, payroll information, or statistical reports, is presented in a structured table format for clarity and ease of comprehension.
 
-### 4.3 Insert, Delete, Modify Records
+### Insert, Delete, Modify Records
 
 Users can insert new employee records, edit existing records to update information, and delete records individually or in bulk.
 
-### 4.4 Search for Records
+### Search for Records
 
 The system features a robust search function that enables users to locate specific records using relevant keywords or values, such as employee ID and name.
 
-### 4.5 Sort Entries
+### Sort Entries
 
 Users can conveniently sort entries in either ascending or descending order using the empolyees' first name (alphabetical), providing flexibility in organizing employee records.
 
